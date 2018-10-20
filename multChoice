@@ -1,0 +1,5 @@
+public class multChoice implements question{
+	public multChoice(int n){
+		
+	}
+}
