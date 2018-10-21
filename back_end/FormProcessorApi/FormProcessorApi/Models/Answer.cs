@@ -7,9 +7,9 @@
         public int PixelCount { get; set; }
         public bool Selected { get; set; }
 
-        public int RegionTopLeft { get; set; }
-        public int RegionBottomLeft { get; set; }
-        public int RegionTopRight { get; set; }
-        public int RegionBottomRight { get; set; }
+        public APoint RegionTopLeft { get; set; }
+        public APoint RegionBottomLeft { get; set; }
+        public APoint RegionTopRight { get; set; }
+        public APoint RegionBottomRight { get; set; }
     }
 }

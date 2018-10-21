@@ -3,14 +3,16 @@ using System;
 using FormProcessorApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FormProcessorApi.Migrations
 {
     [DbContext(typeof(FormDetailsContext))]
-    partial class FormDetailsContextModelSnapshot : ModelSnapshot
+    [Migration("20181021103733_RegionTypeChange")]
+    partial class RegionTypeChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
