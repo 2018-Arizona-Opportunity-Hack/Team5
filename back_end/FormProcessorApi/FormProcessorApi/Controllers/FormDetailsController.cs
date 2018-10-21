@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using FormProcessorApi.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace FormProcessorApi
 {
@@ -19,12 +19,12 @@ namespace FormProcessorApi
         {
             _context = context;
         }
-
+        
         // GET: api/FormDetails
         [HttpGet]
-        public IEnumerable<FormDetails> GetFormDetails()
+        public IEnumerable<FormDetails> GetFormDetails([FromRoute] bool templatesOnly)
         {
-            return _context.FormDetails;
+            return templatesOnly ? _context.FormDetails.Where(f => f.IsTemplate) : _context.FormDetails;
         }
 
         // GET: api/FormDetails/5
@@ -46,41 +46,6 @@ namespace FormProcessorApi
             return Ok(formDetails);
         }
 
-        // PUT: api/FormDetails/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutFormDetails([FromRoute] int id, [FromBody] FormDetails formDetails)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != formDetails.FormDetailsId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(formDetails).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FormDetailsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
         // POST: api/FormDetails
         [HttpPost]
         public async Task<IActionResult> PostFormDetails([FromBody] FormDetails formDetails)
@@ -93,7 +58,41 @@ namespace FormProcessorApi
             _context.FormDetails.Add(formDetails);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFormDetails", new { id = formDetails.FormDetailsId }, formDetails);
+            //return CreatedAtAction("GetFormDetails", new { id = formDetails.FormDetailsId }, formDetails);
+            return Created("GetFormDetails", formDetails.FormDetailsId);
+        }
+
+        [HttpPut]
+        [Consumes("application/json", "multipart/form-data")]
+        public async Task<IActionResult> PutFormImage([FromRoute] int id, IFormFile file)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var formDetails = await _context.FormDetails.FindAsync(id);
+
+            // OCR - loop through all regions, crop to region, send for ocr
+            using (var stream = new MemoryStream())
+            {
+                await formDetails.FormImage.CopyToAsync(stream);
+                foreach (Question q in formDetails.Questions)
+                {
+                    //FUNCTION CALL - CROP & SUBMIT FOR OCR, RETURN BLACK PIXEL COUNT & TEXT
+                    // SAVE RESULTS TO formDetails
+                    foreach (Answer a in q.Answers)
+                    {
+                        //SAME
+                        // SAVE RESULTS TO formDetails
+                    }
+                }
+            }
+
+            _context.FormDetails.Add(formDetails);
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
 
         // DELETE: api/FormDetails/5

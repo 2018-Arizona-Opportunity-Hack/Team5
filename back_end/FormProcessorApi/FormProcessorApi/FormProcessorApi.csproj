@@ -10,6 +10,10 @@
     <Compile Remove="Migrations\20181021091518_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20181021094009_InitialCreate.cs" />
     <Compile Remove="Migrations\20181021094009_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20181021103733_RegionTypeChange.cs" />
+    <Compile Remove="Migrations\20181021103733_RegionTypeChange.Designer.cs" />
+    <Compile Remove="Migrations\20181021203014_RegionStructure.cs" />
+    <Compile Remove="Migrations\20181021203014_RegionStructure.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,11 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="7.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
   </ItemGroup>
 

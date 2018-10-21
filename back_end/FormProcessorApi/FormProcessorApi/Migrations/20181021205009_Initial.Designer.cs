@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormProcessorApi.Migrations
 {
     [DbContext(typeof(FormDetailsContext))]
-    [Migration("20181021103733_RegionTypeChange")]
-    partial class RegionTypeChange
+    [Migration("20181021205009_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,13 +27,7 @@ namespace FormProcessorApi.Migrations
 
                     b.Property<int?>("QuestionId");
 
-                    b.Property<int?>("RegionBottomLeftAPointId");
-
-                    b.Property<int?>("RegionBottomRightAPointId");
-
-                    b.Property<int?>("RegionTopLeftAPointId");
-
-                    b.Property<int?>("RegionTopRightAPointId");
+                    b.Property<int?>("RegionARectangleId");
 
                     b.Property<bool>("Selected");
 
@@ -43,29 +37,27 @@ namespace FormProcessorApi.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.HasIndex("RegionBottomLeftAPointId");
-
-                    b.HasIndex("RegionBottomRightAPointId");
-
-                    b.HasIndex("RegionTopLeftAPointId");
-
-                    b.HasIndex("RegionTopRightAPointId");
+                    b.HasIndex("RegionARectangleId");
 
                     b.ToTable("Answer");
                 });
 
-            modelBuilder.Entity("FormProcessorApi.Models.APoint", b =>
+            modelBuilder.Entity("FormProcessorApi.Models.ARectangle", b =>
                 {
-                    b.Property<int>("APointId")
+                    b.Property<int>("ARectangleId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Height");
+
+                    b.Property<int>("Width");
 
                     b.Property<int>("X");
 
                     b.Property<int>("Y");
 
-                    b.HasKey("APointId");
+                    b.HasKey("ARectangleId");
 
-                    b.ToTable("APoint");
+                    b.ToTable("ARectangle");
                 });
 
             modelBuilder.Entity("FormProcessorApi.Models.FormDetails", b =>
@@ -91,13 +83,7 @@ namespace FormProcessorApi.Migrations
 
                     b.Property<int?>("FormDetailsId");
 
-                    b.Property<int?>("RegionBottomLeftAPointId");
-
-                    b.Property<int?>("RegionBottomRightAPointId");
-
-                    b.Property<int?>("RegionTopLeftAPointId");
-
-                    b.Property<int?>("RegionTopRightAPointId");
+                    b.Property<int?>("RegionARectangleId");
 
                     b.Property<string>("Text");
 
@@ -105,13 +91,7 @@ namespace FormProcessorApi.Migrations
 
                     b.HasIndex("FormDetailsId");
 
-                    b.HasIndex("RegionBottomLeftAPointId");
-
-                    b.HasIndex("RegionBottomRightAPointId");
-
-                    b.HasIndex("RegionTopLeftAPointId");
-
-                    b.HasIndex("RegionTopRightAPointId");
+                    b.HasIndex("RegionARectangleId");
 
                     b.ToTable("Question");
                 });
@@ -122,21 +102,9 @@ namespace FormProcessorApi.Migrations
                         .WithMany("Answers")
                         .HasForeignKey("QuestionId");
 
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionBottomLeft")
+                    b.HasOne("FormProcessorApi.Models.ARectangle", "Region")
                         .WithMany()
-                        .HasForeignKey("RegionBottomLeftAPointId");
-
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionBottomRight")
-                        .WithMany()
-                        .HasForeignKey("RegionBottomRightAPointId");
-
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionTopLeft")
-                        .WithMany()
-                        .HasForeignKey("RegionTopLeftAPointId");
-
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionTopRight")
-                        .WithMany()
-                        .HasForeignKey("RegionTopRightAPointId");
+                        .HasForeignKey("RegionARectangleId");
                 });
 
             modelBuilder.Entity("FormProcessorApi.Models.Question", b =>
@@ -145,21 +113,9 @@ namespace FormProcessorApi.Migrations
                         .WithMany("Questions")
                         .HasForeignKey("FormDetailsId");
 
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionBottomLeft")
+                    b.HasOne("FormProcessorApi.Models.ARectangle", "Region")
                         .WithMany()
-                        .HasForeignKey("RegionBottomLeftAPointId");
-
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionBottomRight")
-                        .WithMany()
-                        .HasForeignKey("RegionBottomRightAPointId");
-
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionTopLeft")
-                        .WithMany()
-                        .HasForeignKey("RegionTopLeftAPointId");
-
-                    b.HasOne("FormProcessorApi.Models.APoint", "RegionTopRight")
-                        .WithMany()
-                        .HasForeignKey("RegionTopRightAPointId");
+                        .HasForeignKey("RegionARectangleId");
                 });
 #pragma warning restore 612, 618
         }
