@@ -15,10 +15,6 @@ namespace FormProcessorApi.Migrations
                     TemplateId = table.Column<int>(nullable: false),
                     Filename = table.Column<string>(nullable: true),
                     IsTemplate = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FormDetails", x => x.FormDetailsId);
                 });
 
             migrationBuilder.CreateTable(
@@ -33,16 +29,6 @@ namespace FormProcessorApi.Migrations
                     RegionTopRight = table.Column<int>(nullable: false),
                     RegionBottomRight = table.Column<int>(nullable: false),
                     FormDetailsId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Question", x => x.QuestionId);
-                    table.ForeignKey(
-                        name: "FK_Question_FormDetails_FormDetailsId",
-                        column: x => x.FormDetailsId,
-                        principalTable: "FormDetails",
-                        principalColumn: "FormDetailsId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,16 +44,6 @@ namespace FormProcessorApi.Migrations
                     RegionTopRight = table.Column<int>(nullable: false),
                     RegionBottomRight = table.Column<int>(nullable: false),
                     QuestionId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Answer", x => x.AnswerId);
-                    table.ForeignKey(
-                        name: "FK_Answer_Question_QuestionId",
-                        column: x => x.QuestionId,
-                        principalTable: "Question",
-                        principalColumn: "QuestionId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
