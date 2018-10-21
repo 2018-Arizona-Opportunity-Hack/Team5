@@ -2,7 +2,7 @@
 ## Team 5 -- Opportunity Hack 2018, Data Analysis Problem Statement
 
 
-Have you ever felt like a paper form drifting through the wind wanting to start again? Okay, probabaly not. But perhaps you've felt the overwhelming dread of drowning in a never ending sea of dried trees and paper cuts. If so, today is your lucky day. Dry your eyes, go for a nice walk and smell the roses because there's a light at the end of this tunnel! 
+Have you ever felt like a paper form drifting through the wind wanting to start again? Okay, probabaly not. But perhaps you've felt ovewhelmed by the sea of paper and paper cuts you've endured while manually entering data through Google Docs. If so, today is your lucky day. Dry your eyes, go for a nice walk and smell the roses because there's a light at the end of this tunnel! 
 
 Introducing, A^2D^2 (A - skwerd - D skwerd, (A squared D squared)) otherwise known as All About Dat Data! This Web App is the answer you've been looking for--leading you to go through a quick, seamless process all resulting in empty filling cabinets and all the data you could dream of. 
 
