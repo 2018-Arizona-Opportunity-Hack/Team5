@@ -1,6 +1,6 @@
-# A^2D^2
-## A.K.A All About Dat Data
-### Team 5
+# A^2D^2 -- A.K.A All About Dat Data
+## Team 5 -- Opportunity Hack 2018, Data Analysis Problem Statement
+
 
 Have you ever felt like a paper form drifting through the wind wanting to start again? Okay, probabaly not. But perhaps you've felt the overwhelming dread of drowning in a never ending sea of dried trees and paper cuts. If so, today is your lucky day. Dry your eyes, go for a nice walk and smell the roses because there's a light at the end of this tunnel! 
 
