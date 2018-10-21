@@ -1,11 +1,9 @@
-import { FilePond } from 'react-filepond'
-import 'filepond/dist/filepond.min.css'
-import React, { Component } from 'react'
-import Template from './template'
 
-class Form extends Component {
+import React, { Component } from 'react'
+
+class Template extends Component {
   render () {
-    var formStyle = {
+  	 var templateStyle = {
       width: 250,
       textAlign: 'center',
       position: 'center',
@@ -14,16 +12,9 @@ class Form extends Component {
       fontFamily: 'sans-serif',
       color: '#999999',
       borderRadius: 10
-
     }
-
     return (
-      <div style={formStyle}>
-
-        <FilePond allowMultiple />
-
-      </div>
-    )
+      <div style={templateStyle} ><Template /></div>)
   }
 }
-export default Form
+export default Template

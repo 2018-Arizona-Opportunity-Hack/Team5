@@ -1,14 +1,14 @@
-import React, { Component } from "react";
- 
+import React, { Component } from 'react'
+
 class Landing extends Component {
-  render() {
+  render () {
     return (
       <div>
         <h2>Sign-In</h2>
-        
+
       </div>
-    );
+    )
   }
 }
- 
-export default Landing;
+
+export default Landing
