@@ -8,7 +8,7 @@ Introducing, A^2D^2 (A - skwerd - D skwerd, (A squared D squared)) otherwise kno
 
 ### System Details
 
-Time for the Tech Talk. Our system is a web-based application that takes in an empty paper form image and any filled images of that form and digitizes them so that all of you collected data is stored in a SQLite database, easibly queryable for any of you data analysis needs. In our next update, we will be rolling out a data reporting dashboard allowing a more direct access point to your data with the ability to filter on specific data values and potentially visual representations. 
+Time for the Tech Talk. Our system is a web-based application that takes in an empty paper form image and any filled images of that form and digitizes them so that all of your collected data is stored in a SQLite database, easibly queryable for any of your data analysis needs. In our next update, we will be rolling out a data reporting dashboard allowing a more direct access point to your data with the ability to filter on specific data values and potentially visual representations. 
 
 - Front-End: React.js 
 - Form Input and Labeling: Java Applet
