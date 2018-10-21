@@ -39,7 +39,7 @@ class Chart extends Component{
           options={{
             title:{
               display:this.props.displayTitle,
-              text:'Potential customer by 2020:'+this.props.location,
+              text:'Pets without home:'+this.props.location,
               fontSize:25
             },
             legend:{
