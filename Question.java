@@ -18,6 +18,7 @@ public class Question{
 		for (int i = 0; i < ans.size(); i++){
 			answer [i] = gson.toJson(ans.get(i));
 		}
+		return answer;
 	}
 }
 
