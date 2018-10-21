@@ -3,6 +3,11 @@
 
 using namespace std;
 
+struct aBox {
+	string aText;
+	int aCoords[4];
+};
+
 //base class
 class Question {
 public:
@@ -14,6 +19,14 @@ public:
 		return qText;
 	}
 
+	/*void setqCoords(int x1, int y1, int x2, int y2) {
+		qCoords[0] = x1;
+		qCoords[1] = y1;
+		qCoords[2] = x2;
+		qCoords[3] = y2;
+	}
+	*/
+
 	virtual void chooseA(string a) {}
 
 	virtual vector<string> getA() {
@@ -21,34 +34,37 @@ public:
 	}
 
 protected:
-	string rawA; //raw string indicating answer. handle differently for each question
-
 	string qText;
+	//int qCoords[4]; //x1,y1,x2,y2
 	vector<string> answer;
 };
 
 //derived classes
 class MultChoice : public Question {
 private:
-	vector<string> aVec;
+	vector<aBox> aVec;
 
 public:
 	//constructor
-	MultChoice(int n) {
-		vector<string> temp(n);
-		aVec = temp;
+	MultChoice() {
 	}
 
-	void defineA(int i, string a) { //i is index of aVec; a is answer text (usually letter like A, B, C...)
-		aVec[i] = a;
+	void defineA(string a, int x1, int y1, int x2, int y2) { // a is answer text (usually letter like A, B, C...)
+		aBox temp;
+		temp.aText = a;
+		temp.aCoords[0] = x1;
+		temp.aCoords[1] = y1;
+		temp.aCoords[2] = x2;
+		temp.aCoords[3] = y2;
+		aVec.push_back(temp);
 	}
 
 	virtual void chooseA(string a) { //"a" is the answer text you want to select (usually "A", "B", ...)
 		//increment through aVec until you find answer text that matches a
 		for (int i = 0; i < aVec.size(); i++) {
 			//only add answer if no answer has been added yet
-			if (answer.empty() && aVec[i].compare(a) == 0)
-				answer.push_back(aVec[i]);
+			if (answer.empty() && aVec[i].aText.compare(a) == 0)
+				answer.push_back(aVec[i].aText);
 		}
 	}
 
@@ -59,25 +75,29 @@ public:
 
 class CheckBox : public Question {
 private:
-	vector<string> aVec;
+	vector<aBox> aVec;
 
 public:
 	//constructor
-	CheckBox(int n) {
-		vector<string> temp(n);
-		aVec = temp;
+	CheckBox() {
 	}
 
-	void defineA(int i, string a) { //i is index of aVec; a is answer text (usually letter like A, B, C...)
-		aVec[i] = a;
+	void defineA(string a, int x1, int y1, int x2, int y2) { // a is answer text (usually letter like A, B, C...)
+		aBox temp;
+		temp.aText = a;
+		temp.aCoords[0] = x1;
+		temp.aCoords[1] = y1;
+		temp.aCoords[2] = x2;
+		temp.aCoords[3] = y2;
+		aVec.push_back(temp);
 	}
 
 	//call chooseA zero or more times; once for each answer that is checked
 	virtual void chooseA(string a) { //"a" is the answer text you want to select (usually "A", "B", ...)
-									 //increment through aVec until you find answer text that matches a
+		//increment through aVec until you find answer text that matches a
 		for (int i = 0; i < aVec.size(); i++) {
-			if (aVec[i].compare(a) == 0)
-				answer.push_back(aVec[i]);
+			if (aVec[i].aText.compare(a) == 0)
+				answer.push_back(aVec[i].aText);
 		}
 	}
 
@@ -87,8 +107,20 @@ public:
 };
 
 class FreeResponse : public Question {
+private:
+	vector<aBox> aVec;
+
 public:
 	FreeResponse() {}
+
+	void defineA(int x1, int y1, int x2, int y2) { // a is answer text (usually letter like A, B, C...)
+		aBox temp;
+		temp.aCoords[0] = x1;
+		temp.aCoords[1] = y1;
+		temp.aCoords[2] = x2;
+		temp.aCoords[3] = y2;
+		aVec.push_back(temp);
+	}
 
 	virtual void chooseA(string a) {
 		//only add answer if havent added one yet
@@ -104,26 +136,28 @@ public:
 int main() {
 
 	vector<Question*> bing;
-	MultChoice m = MultChoice(4);
+
+	MultChoice m = MultChoice();
 	m.setQ("What is your favorite color?");
-	m.defineA(0, "Yellow");
-	m.defineA(1, "Red");
-	m.defineA(2, "Green");
-	m.defineA(3, "Blue");
+	m.defineA("Yellow", 0,1,2,3);
+	m.defineA("Red", 0, 1, 2, 3);
+	m.defineA("Green", 0, 1, 2, 3);
+	m.defineA("Blue", 0, 1, 2, 3);
 	bing.push_back(&m);
 
 	FreeResponse f = FreeResponse();
 	f.setQ("What do you think about the economy?");
+	f.defineA(0, 1, 2, 3);
 	bing.push_back(&f);
 
-	CheckBox c = CheckBox(6);
+	CheckBox c = CheckBox();
 	c.setQ("What do you like?");
-	c.defineA(0, "Puppies");
-	c.defineA(1, "Sunshine");
-	c.defineA(2, "Flowers");
-	c.defineA(3, "Monkeys");
-	c.defineA(4, "Birds");
-	c.defineA(5, "Rainbows");
+	c.defineA("Puppies", 0, 1, 2, 3);
+	c.defineA("Sunshine", 0, 1, 2, 3);
+	c.defineA("Flowers", 0, 1, 2, 3);
+	c.defineA("Monkeys", 0, 1, 2, 3);
+	c.defineA("Birds", 0, 1, 2, 3);
+	c.defineA("Rainbows", 0, 1, 2, 3);
 	bing.push_back(&c);
 
 
