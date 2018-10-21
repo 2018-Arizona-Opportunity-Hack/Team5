@@ -13,7 +13,7 @@ Time for the Tech Talk. Our system is a web-based application that takes in an e
 - Front-End: React.js 
 - Form Input and Labeling: Java Applet
 - Back-End: Python (Python2) Image Processing, .Net Core API with SQLite Database
-- - Python Libararies: OpenCV (cv2), Numpy, ArgParse
+  - Python Libararies: OpenCV (cv2), Numpy, ArgParse
 
 For the best convenience possible, we plan to have this application deployable through Heroku, which is a one-click hosting platform allowing for minimal effort to run your own instance of our app for your NPO.
 
