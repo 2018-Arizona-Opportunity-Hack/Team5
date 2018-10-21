@@ -26,7 +26,8 @@ Using A^2D^2 is easy! After completeing the one-click set-up of your heroku inst
 
 - To start, first upload an image of your form without any data entered (blank) through the "Add New Form" option. This image will then populate on the screen, leading you through an easy-to-use annotation process that allows us to capture the questions you are asking and the answers availble.
 - Once complete, all you have to do is press submit which allows our back-end magic to get to work on deciphering your form for future use. This form will be stored for you by the name of the image that you uploaded. 
-- When you have a completed versions of this form, you simply come back to our app and select the option to "Upload a Completed Form." - - You then select the name of the form and upload the image. 
+- When you have a completed versions of this form, you simply come back to our app and select the option to "Upload a Completed Form." 
+- You then select the name of the form and upload the image. 
 - Once you do this, we will compare your completed form with the form on file resulting in a complete set of the selections made on the completed form which is stored in a SQLite database for future use. 
 - This database is tied to the Reporting funcitonality of the app and allows for a seamless integration with all of your data analysis needs. 
 
