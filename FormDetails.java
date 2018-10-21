@@ -1,3 +1,4 @@
+package forms;
 import java.util.*;
 
 public class FormDetails{
