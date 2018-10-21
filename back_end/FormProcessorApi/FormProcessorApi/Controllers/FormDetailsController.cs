@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using FormProcessorApi.Models;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace FormProcessorApi
 {
@@ -54,6 +55,24 @@ namespace FormProcessorApi
                 return BadRequest(ModelState);
             }
 
+            _context.FormDetails.Add(formDetails);
+            await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetFormDetails", new { id = formDetails.FormDetailsId }, formDetails);
+            return Created("GetFormDetails", formDetails.FormDetailsId);
+        }
+
+        [HttpPut]
+        [Consumes("application/json", "multipart/form-data")]
+        public async Task<IActionResult> PostFormImage([FromRoute] int id, IFormFile file)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var formDetails = await _context.FormDetails.FindAsync(id);
+
             // OCR - loop through all regions, crop to region, send for ocr
             using (var stream = new MemoryStream())
             {
@@ -62,7 +81,7 @@ namespace FormProcessorApi
                 {
                     //FUNCTION CALL - CROP & SUBMIT FOR OCR, RETURN BLACK PIXEL COUNT & TEXT
                     // SAVE RESULTS TO formDetails
-                    foreach(Answer a in q.Answers)
+                    foreach (Answer a in q.Answers)
                     {
                         //SAME
                         // SAVE RESULTS TO formDetails
@@ -73,7 +92,7 @@ namespace FormProcessorApi
             _context.FormDetails.Add(formDetails);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFormDetails", new { id = formDetails.FormDetailsId }, formDetails);
+            return Ok();
         }
 
         // DELETE: api/FormDetails/5
