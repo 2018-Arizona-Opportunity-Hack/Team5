@@ -14,5 +14,10 @@ namespace FormProcessorApi.Models
         }
 
         public DbSet<FormProcessorApi.Models.FormDetails> FormDetails { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlite("Data Source=formdetails.db");
+        }
     }
 }
