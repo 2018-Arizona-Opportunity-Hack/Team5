@@ -1,4 +1,4 @@
-# A^2D^2 -- A.K.A All About Dat Data
+# A^2D^2 -- A.K.A. All About Dat Data
 ## Team 5 -- Opportunity Hack 2018, Data Analysis Problem Statement
 
 
@@ -8,7 +8,7 @@ Introducing, A^2D^2 (A - skwerd - D skwerd, (A squared D squared)) otherwise kno
 
 ### System Details
 
-Time for the Tech Talk. Our system is a web-based application that takes in an empty paper form image and any filled images of that form and digitizes them so that all of your collected data is stored in a SQLite database, easibly queryable for any of you data analysis needs. In our next update, we will be rolling out a data reporting dashboard allowing a more direct access point to your data with the ability to filter on specific data values and potentially visual representations. 
+Time for the Tech Talk. Our system is a web-based application that takes in an empty paper form image and any filled images of that form and digitizes them so that all of your collected data is stored in a SQLite database, easily queryable for any of your data analysis needs. In our next update, we will be rolling out a data reporting dashboard allowing a more direct access point to your data with the ability to filter on specific data values and potentially visual representations. 
 
 - Front-End: React.js 
 - Form Input and Labeling: Java Applet
@@ -24,6 +24,13 @@ Lastly, we plan to have a CSV export function available through the Reporting fu
 ### User Flow
 Using A^2D^2 is easy! After completeing the one-click set-up of your heroku instance, you'll be ready to start processing your forms.
 
-To start, first upload an image of your form without any data entered (blank) through the "Add New Form" option. This image will then populate on the screen, leading you through an easy-to-use annotation process that allows us to capture the questions you are asking and the answers availble. Once complete, all you have to do is press submit which allows our back-end magic to get to work on deciphering your form for future use. This form will be stored for you by the name of the image that you uploaded. When you have a completed versions of this form, you simply come back to our app and select the option to "Upload a Completed Form." You then select the name of the form and upload the image. Once you do this, we will compare your completed form with the form on file resulting in a complete set of the selections made on the completed form which is stored in a SQLite database for future use. This database is tied to the Reporting funcitonality of the app and allows for a seamless integration with all of your data analysis needs. 
+- To start, first upload an image of your form without any data entered (blank) through the "Add New Form" option. This image will then populate on the screen, leading you through an easy-to-use annotation process that allows us to capture the questions you are asking and the answers availble.
+- Once complete, all you have to do is press submit which allows our back-end magic to get to work on deciphering your form for future use. This form will be stored for you by the name of the image that you uploaded. 
+- When you have a completed versions of this form, you simply come back to our app and select the option to "Upload a Completed Form." - - You then select the name of the form and upload the image. 
+- Once you do this, we will compare your completed form with the form on file resulting in a complete set of the selections made on the completed form which is stored in a SQLite database for future use. 
+- This database is tied to the Reporting funcitonality of the app and allows for a seamless integration with all of your data analysis needs. 
 
+### Future Improvements
+- Currently our system only handles one page forms as only one image can be uploaded at a time. We'd like to adjust this so that multiple page forms could be accepted without manual input. 
+- In order to get accurate results for text etraction, we need more time to train and evaluate different OCR methods. Ideally, we would gather samples of questions and answers and look for a method that gives us the highest amount of accuracy without risking efficiency. 
 
