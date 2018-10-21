@@ -32,5 +32,5 @@ Using A^2D^2 is easy! After completeing the one-click set-up of your heroku inst
 
 ### Future Improvements
 - Currently our system only handles one page forms as only one image can be uploaded at a time. We'd like to adjust this so that multiple page forms could be accepted without manual input. 
-- In order to get accurate results for text etraction, we need more time to train and evaluate different OCR methods. Ideally, we would gather samples of questions and answers and look for a method that gives us the highest amount of accuracy without risking efficiency. 
+- In order to get accurate results for text extraction, we need more time to train and evaluate different OCR methods. Ideally, we would gather samples of questions and answers and look for a method that gives us the highest amount of accuracy without risking efficiency. 
 
