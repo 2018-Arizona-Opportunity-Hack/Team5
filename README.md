@@ -17,7 +17,7 @@ Time for the Tech Talk. Our system is a web-based application that takes in an e
 
 For the best convenience possible, we plan to have this application deployable through Heroku, which is a one-click hosting platform allowing for minimal effort to run your own instance of our app for your NPO.
 
-For Security, we plan to scan all files uploaded prior to acceptance for any signs of bad actors trying to gain access to the system. Also with future versions, we will look into implementing a possible sign in structure usig Google Sign in as a authentication service. 
+For Security, we plan to scan all files uploaded prior to acceptance for any signs of bad actors trying to gain access to the system. Also with future versions, we will look into implementing a possible sign in structure using Google Sign in as a authentication service. 
 
 Lastly, we plan to have a CSV export function available through the Reporting functionality so that you can download any of the data stored from your forms for external use. 
 
