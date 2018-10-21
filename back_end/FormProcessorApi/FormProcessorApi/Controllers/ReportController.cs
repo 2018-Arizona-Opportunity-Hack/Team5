@@ -19,39 +19,34 @@ namespace FormProcessorApi.Controllers
             _context = context;
         }
 
-        // GET: api/Report/5
-        [HttpGet("{id}", Name = "Get")]
-        public string GetQuestionsAggregatedByTemplateId(int id)
+        [HttpGet("{id}")]
+        public Question[] GetQuestions(int templateId)
+        {
+            return _context.FormDetails
+                .Where(f => f.TemplateId == templateId && f.IsTemplate)
+                .FirstOrDefault()
+                .Questions;
+        }
+
+        [HttpGet("{id}")]
+        public Dictionary<string, int> GetAggregatedAnswers(int templateId, int questionId)
         {
             Dictionary<string, int> answerCounts = new Dictionary<string, int>();
-            foreach (FormDetails forms in _context.FormDetails.Where(f => f.TemplateId == id))
+            foreach (FormDetails forms in _context.FormDetails.Where(f => f.TemplateId == templateId && !f.IsTemplate))
             {
-                foreach(Question q in forms.Questions)
+                foreach(Question q in forms.Questions.Where(q => q.QuestionId == questionId))
                 {
                     foreach(Answer a in q.Answers)
                     {
-                        if (answerCounts.ContainsKey())
+                        if (answerCounts.ContainsKey(a.Text))
+                            answerCounts[a.Text]++;
+                        else
+                            answerCounts.Add(a.Text, 1);
                     }
                 }
             }
-        }
 
-        // POST: api/Report
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/Report/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return answerCounts;
         }
     }
 }
