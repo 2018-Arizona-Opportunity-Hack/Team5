@@ -1,4 +1,4 @@
-# A^2D^2 -- A.K.A All About Dat Data
+# A^2D^2 -- A.K.A. All About Dat Data
 ## Team 5 -- Opportunity Hack 2018, Data Analysis Problem Statement
 
 
