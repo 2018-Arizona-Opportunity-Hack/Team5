@@ -10,6 +10,10 @@
     <Compile Remove="Migrations\20181021091518_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20181021094009_InitialCreate.cs" />
     <Compile Remove="Migrations\20181021094009_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20181021103733_RegionTypeChange.cs" />
+    <Compile Remove="Migrations\20181021103733_RegionTypeChange.Designer.cs" />
+    <Compile Remove="Migrations\20181021203014_RegionStructure.cs" />
+    <Compile Remove="Migrations\20181021203014_RegionStructure.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

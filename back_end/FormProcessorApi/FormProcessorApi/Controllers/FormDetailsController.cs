@@ -64,7 +64,7 @@ namespace FormProcessorApi
 
         [HttpPut]
         [Consumes("application/json", "multipart/form-data")]
-        public async Task<IActionResult> PostFormImage([FromRoute] int id, IFormFile file)
+        public async Task<IActionResult> PutFormImage([FromRoute] int id, IFormFile file)
         {
             if (!ModelState.IsValid)
             {
